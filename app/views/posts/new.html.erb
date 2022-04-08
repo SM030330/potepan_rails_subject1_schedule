@@ -1,0 +1,28 @@
+<h2>スケジュール新規作成</h2>
+
+<%= form_with(model: @schedule, url: posts_path, method: :post ) do |f| %>
+  <%= render "shared/errors.html.erb", object: f.object %>
+
+  <table class="new_table">
+    <tr>
+      <td>タイトル</td>
+      <td><%= f.text_field :title %></td>
+    </tr>
+    <tr>
+      <td>開始日</td>
+      <td><%= f.date_field :startdate %></td>
+    </tr>
+      <td>終了日</td>
+      <td><%= f.date_field :finishdate %></td>
+    </tr>
+    <tr>
+      <td>終日</td>
+      <td><%= f.check_box :allday %></td>
+    </tr>
+    <tr>
+      <td>スケジュールメモ</td>
+      <td><%= f.text_area :memo %></td>
+    </tr>
+  </table>
+  <%= f.submit "スケジュールを登録します" %>
+<% end %>
