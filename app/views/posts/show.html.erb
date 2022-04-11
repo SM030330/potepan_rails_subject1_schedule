@@ -1,0 +1,38 @@
+<div class="show-table-continer">
+  <h2>スケジュール詳細</h2>
+  <%= render "shared/flash.html.erb"%>
+  <table class="show-table table-bordered table-striped">
+    <tr>
+      <th>タイトル</th>
+      <td><%= @schedule.title %></td>
+    </tr>
+    <tr>
+      <th>開始日</th>
+      <td><%= @schedule.startdate.strftime("%Y年%m月%d日") %></td>
+    </tr>
+    <tr>
+      <th>投稿日時</th>
+      <td><%= @schedule.created_at.strftime("%Y年%m月%d日") %></td>
+    </tr>
+    <tr>
+      <th>終日</th>
+      <td>
+        <% if @schedule.allday == true %>
+          <span>○</span>
+        <% else %>
+          <span> </span>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>スケジュールメモ</th>
+      <td><%= @schedule.memo %></td>
+    </tr>
+  </table>
+  <div class="show-path-link">
+    <%= link_to("スケジュール一覧に戻る", root_url) %>
+    <%= link_to("スケジュールを編集する", edit_post_path(@schedule.id)) %>
+    <%= link_to("スケジュールを削除", post_path(@schedule.id), method: :delete) %>
+  </div>
+</div>
+

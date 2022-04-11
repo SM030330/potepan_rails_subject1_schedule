@@ -1,5 +1,10 @@
 class PostsController < ApplicationController
   def index
+    @schedules = Schedule.all.order(finishdate: "ASC")
+  end
+
+  def show
+    @schedule = Schedule.find_by(id: params[:id])
   end
 
   def new
@@ -10,7 +15,7 @@ class PostsController < ApplicationController
     @schedule = Schedule.new(post_params())
     
     if @schedule.save
-      flash[:sucses] = "投稿が完了しました。"
+      flash[:success] = "投稿が完了しました。"
       redirect_to root_url
     else
       render 'new'
@@ -18,9 +23,23 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @schedule = Schedule.find_by(id: params[:id])
   end
 
-  def delete
+  def update
+    @schedule = Schedule.find_by(id: params[:id])
+    if @schedule.update(post_params())
+      flash[:success] = "メモの編集を完了しました。"
+      redirect_to post_path(params[:id])
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    Schedule.find_by(id: params[:id]).destroy
+    flash[:success] = "メモを削除しました"
+    redirect_to root_url
   end
 
 private
@@ -32,5 +51,9 @@ private
     end
     params.require(:schedule).permit(:title, :startdate, :finishdate, :allday, :memo)
   end
+
+  # def validate_params
+  #   if @schedule.finishdate < @schedule.startdate
+  #     errors.messages
 
 end

@@ -6,19 +6,24 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
-      <h1><%= link_to("Ruby on Rails スケジュール管理アプリ", posts_path) %></h1>
+      <h1><%= link_to("Ruby on Rails スケジュール管理アプリ", root_url) %></h1>
     </header>
-    <%= yield %>
-
+    <div class="main-continer">
+      <%= yield %>
+    </div>
     <footer>
-      <h2>日時</h2>
+      <div class="footer-continer">
+        <p>現在の日時:<%= Date.today.strftime("%Y年%m月%d日") %></p>
+        <% if current_page?(root_url) || current_page?(posts_path) %>
+          <p>スケジュール合計:<%= Schedule.all.count %></p>
+        <% end %>
+      </div>    
     </footer>
   </body>
 </html>

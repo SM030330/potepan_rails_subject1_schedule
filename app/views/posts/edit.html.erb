@@ -1,8 +1,7 @@
-<div class="new-table-continer">
-  <h2>スケジュール新規作成</h2>
-  <%= form_with(model: @schedule, url: posts_path, method: :post ) do |f| %>
+<div class="edit-table-continer">
+  <h2>スケジュール編集</h2>
+  <%= form_with(model: @schedule, url: post_path, method: :PATCH ) do |f| %>
     <%= render "shared/errors.html.erb", object: f.object %>
-
     <table class="new-table table-bordered table-striped">
       <tr>
         <th>タイトル</th>
@@ -30,7 +29,7 @@
       </tr>
     </table>
     <div class="btn">
-      <%= f.submit "スケジュールを登録します" %>
+      <%= f.submit "スケジュールの編集を完了する" %>
     </div>
   <% end %>
   <div class="root-url-link">

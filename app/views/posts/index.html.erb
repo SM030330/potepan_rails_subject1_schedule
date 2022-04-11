@@ -1,15 +1,41 @@
 <h2>スケジュール一覧</h2>
-<table class="post_table">
-  <tr>
-    <th>ID</th>
-    <th>タイトル</th>
-    <th>開始日</th>
-    <th>終了日</th>
-    <th>終日</th>
-    <th>スケジュール更新日時</th>
-    <th>確認</th>
-    <th>編集</th>
-    <th>削除</th>
-  </tr>
-</table>
-<%= link_to("スケジュール新規登録", new_post_path) %>
+<%= render "shared/flash.html.erb"%>
+<div class="index-table-continer">
+  <table class="table-bordered table-striped">
+    <thead class="thead-dark">
+      <th>ID</th>
+      <th>タイトル</th>
+      <th>開始日</th>
+      <th>終了日</th>
+      <th>終日</th>
+      <th>スケジュール更新日時</th>
+      <th>確認</th>
+      <th>編集</th>
+      <th>削除</th>
+    </thead>
+    <tbody>
+      <% @schedules.each do |sch| %>
+        <tr>
+          <td><%= sch.id %></td>
+          <td><%= sch.title %></td>
+          <td><%= sch.startdate.strftime("%Y年%m月%d日") %></td>
+          <td><%= sch.finishdate.strftime("%Y年%m月%d日") %></td>
+          <td>
+            <% if sch.allday == true %>
+              <span>○</span>
+            <% else %>
+              <span> </span>
+            <% end %>
+          </td>
+          <td><%= sch.updated_at.strftime("%Y年%m月%d日") %></td>
+          <td><%= link_to("確認", post_path(sch.id)) %></td>
+          <td><%= link_to("編集", edit_post_path(sch.id)) %></td>
+          <td><%= link_to("削除", post_path(sch.id), method: :DELETE) %></td>
+        </tr>  
+      <% end %>
+    </tbody>
+  </table>
+  <div class="new-post-link">
+    <%= link_to("スケジュール新規登録", new_post_path) %>
+  </div>
+</div>
