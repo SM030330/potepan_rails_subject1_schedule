@@ -1,0 +1,155 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+@import "bootstrap";
+
+// application.html
+header, footer {
+  height: 100px;
+  background-color: #c52f24;
+  padding:0 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+h1 a {
+  color: white;
+}
+
+h2 {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.main-continer {
+  padding: 0 20px;
+  
+}
+
+.footer-continer {
+  display: flex;
+  font-size: 25px;
+  width: 60%;
+  justify-content: space-between;
+}
+
+// index.html
+.new-table-continer, .show-table-continer, .edit-table-continer {
+  display: flex;  
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.index-table-continer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-direction: column;
+  table {
+    text-align: center;
+  }
+}
+.new-post-link {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+// new_posts_path
+
+.new-table {
+  text-align: center;
+  th {
+    width: 200px;
+  }
+  td {
+    width: 400px;
+  }
+  .new-checkbox {
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    p {
+      margin: 0;
+    }
+  }
+  input {
+    width: 90%;
+    margin: 5px 0;
+  }
+  textarea {
+    width: 90%;
+    height: 200px;
+    margin: 5px 0;
+  }
+}
+.btn {
+  padding-left: 0;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.root-url-link {
+  margin-bottom: 20px;
+}
+
+// show-path
+.show-table {
+  text-align: center;
+  th {
+    width: 200px;
+    height: 40px;
+  }
+  td {
+    width: 400px;
+  }
+  tr:nth-child(5) {
+    height: 200px ;
+  }
+  .new-checkbox {
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    p {
+      margin: 0;
+    }
+  }
+  input {
+    width: 90%;
+    margin: 5px 0;
+  }
+  textarea {
+    width: 90%;
+    height: 200px;
+    margin: 5px 0;
+  }
+}
+
+.show-path-link {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  margin-bottom: 40px;  
+}
+
+// errors.html
+.alert-box {
+  display: inline-block;
+  padding: 20px 30px;
+  li {
+    list-style: none;
+    
+  }
+}

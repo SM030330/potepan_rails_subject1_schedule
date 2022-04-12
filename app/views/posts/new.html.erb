@@ -1,0 +1,39 @@
+<div class="new-table-continer">
+  <h2>スケジュール新規作成</h2>
+  <%= form_with(model: @schedule, url: posts_path, method: :post ) do |f| %>
+    <%= render "shared/errors.html.erb", object: f.object %>
+
+    <table class="new-table table-bordered table-striped">
+      <tr>
+        <th>タイトル</th>
+        <td><%= f.text_field :title %></td>
+      </tr>
+      <tr>
+        <th>開始日</th>
+        <td><%= f.date_field :startdate %></td>
+      </tr>
+        <th>終了日</th>
+        <td><%= f.date_field :finishdate %></td>
+      </tr>
+      <tr>
+        <th>終日</th>
+        <td class="new-checkbox">
+          <div>
+            <%= f.check_box :allday %>
+            <p>終日の場合はチェックを入れます</p>
+          </div>      
+        </td>
+      </tr>
+      <tr>
+        <th>スケジュールメモ</th>
+        <td><%= f.text_area :memo %></td>
+      </tr>
+    </table>
+    <div class="btn">
+      <%= f.submit "スケジュールを登録します" %>
+    </div>
+  <% end %>
+  <div class="root-url-link">
+    <%= link_to("スケジュール一覧に戻る", root_url) %>
+  </div>
+</div>
